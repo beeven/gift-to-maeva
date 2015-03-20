@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    body, html,#map {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+    #view {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width:200px;
+        height: 200px;
+        background: transparent;
+    }
+    </style>
+
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=QQFBZ-MSVWG-362QZ-I7Q4Z-GTZ5K-JDFFG"></script>
+    <title>Footprint</title>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="view"></div>
+</body>
+</html>
+<script type="text/javascript">
+    var center = new qq.maps.LatLng(22.944206348550168, 113.35924029350281);
+    var map = new qq.maps.Map(document.getElementById("map"),{center: center, zoom: 17})
+
+    var label = new qq.maps.Label({
+        offset: new qq.maps.Size(15,0)
+    });
+    var panoLayer = new qq.maps.PanoramaLayer();
+    panoLayer.setMap(map);
+    var panoService = new qq.maps.PanoramaService();
+
+    var pano = new qq.maps.Panorama(document.getElementById("view"),{
+        disableMove: false,
+        disableCompass: true,
+        visible: false
+    })
+
+    qq.maps.event.addListener(map,"mousemove",function(e){
+        label.setContent(e.latLng.toString());
+        label.setPosition(e.latLng);
+    });
+    qq.maps.event.addListener(map,"click",function(e){
+        console.log(e.latLng.toString());
+        panoService.getPano(e.latLng,1000,function(result){
+            console.log("Pano:", result);
+            pano.setVisible(true);
+            pano.setPano(result.svid);
+        })
+    })
+    qq.maps.event.addListener(map,"mouseover", function(e){
+        label.setMap(map);
+    })
+    qq.maps.event.addListener(map,"mouseout",function(e){
+        label.setMap(null);
+    })
+
+    qq.maps.event.addListener(pano,"pano_changed",function(e){
+        console.log("Pov:",e.target.getPov());
+        console.log("Pano",e.target.getPano());
+    })
+    setTimeout(function(){
+        var marker = new qq.maps.Marker({
+            position: center,
+            animation: qq.maps.MarkerAnimation.DROP,
+            map:map,
+            draggable: true,
+            clickable: true
+        });
+        qq.maps.event.addListener(marker,"click",function(e){
+            console.log(e.target.getPosition().toString());
+            pano.setVisible(!pano.getVisible());
+        })
+    },500)
+
+
+</script>

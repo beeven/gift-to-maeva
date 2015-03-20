@@ -10,7 +10,11 @@
                 "pano": "10061017120905121452300",
                 "heading": 193.2,
                 "pitch": -1.5
-            }
+            },
+            "lines": [
+                "Here was where we met",
+                "We didn't know each other"
+            ]
         },
         {
             "name": "星海中学",
@@ -22,7 +26,10 @@
                 "pano": "10061004140704133737800",
                 "heading": 90.2,
                 "pitch": -5.9
-            }
+            },
+            "lines": [
+                "The first time I met you "
+            ]
         }
     ]
         

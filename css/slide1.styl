@@ -1,0 +1,32 @@
+#slide1 .content
+    display flex    
+    align-items center
+    justify-content center
+    
+
+
+#slide1.current
+    animation dime_background 1s forwards
+    -webkit-animation dime_background 1s forwards
+    
+    .title
+        animation show_title 2s forwards
+        animation-delay 0.5s
+        -webkit-animation show_title 2s forwards
+        -webkit-animation-delay 0.5s
+        font-size 0
+        
+    
+@keyframes dime_background {
+    from {background-color: #EAEBE7} to {background-color: #333}
+}
+
+@keyframes show_title {
+    from {
+        font-size 0
+    }
+    
+    to {
+        font-size 4em
+    }
+}

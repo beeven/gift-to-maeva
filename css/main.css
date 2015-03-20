@@ -1,0 +1,141 @@
+html,
+body,
+#container {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  background-color: #eaebe7;
+  position: relative;
+  height: 100%;
+}
+.slide {
+  display: none;
+  height: 100%;
+}
+.slide .content {
+  height: 100%;
+}
+.slide.current {
+  display: block;
+}
+#slide1 .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#slide1.current {
+  animation: dime_background 1s forwards;
+  -webkit-animation: dime_background 1s forwards;
+}
+#slide1.current .title {
+  animation: show_title 2s forwards;
+  animation-delay: 0.5s;
+  -webkit-animation: show_title 2s forwards;
+  -webkit-animation-delay: 0.5s;
+  font-size: 0;
+}
+@-moz-keyframes dime_background {
+  from {
+    background-color: #eaebe7;
+  }
+  to {
+    background-color: #333;
+  }
+}
+@-webkit-keyframes dime_background {
+  from {
+    background-color: #eaebe7;
+  }
+  to {
+    background-color: #333;
+  }
+}
+@-o-keyframes dime_background {
+  from {
+    background-color: #eaebe7;
+  }
+  to {
+    background-color: #333;
+  }
+}
+@keyframes dime_background {
+  from {
+    background-color: #eaebe7;
+  }
+  to {
+    background-color: #333;
+  }
+}
+@-moz-keyframes show_title {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 4em;
+  }
+}
+@-webkit-keyframes show_title {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 4em;
+  }
+}
+@-o-keyframes show_title {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 4em;
+  }
+}
+@keyframes show_title {
+  from {
+    font-size: 0;
+  }
+  to {
+    font-size: 4em;
+  }
+}
+#slide2 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+#slide3 .content {
+  display: flex;
+  flex-direction: row;
+}
+#map {
+  height: 100%;
+  flex: 3 1 75%;
+}
+#pano {
+  height: 100%;
+  flex: 1 1 25%;
+}
+#map .lines {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+  text-align: center;
+  display: none;
+}
+#map .lines .typed {
+  width: 500px;
+  background-color: #ffceff;
+  border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  padding-top: 20px;
+}
